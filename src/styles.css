@@ -1,3 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .color {
   color: aqua;
+}
+
+.weatherInfoDiv {
+  color: aquamarine;
+}
+
+#content {
+  width: 100vw;
+  height: 100vh;
+  background: url('./synthwave.jpg');
+  background-size: cover;
+}
+
+span {
+  padding: 0 10px;
 }
