@@ -1,24 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.color {
-  color: aqua;
-}
-
-.weatherInfoDiv {
-  color: aquamarine;
+body {
+  background: url('./bg3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #content {
-  width: 100vw;
-  height: 100vh;
-  background: url('./synthwave.jpg');
-  background-size: cover;
+  margin-top: 180px;
 }
 
-span {
-  padding: 0 10px;
+.color {
+  color: rgb(241, 241, 241);
+  font-family: 'Kanit', sans-serif;
+}
+
+
+#temperature, #city {
+  font-size: 60px;
+}
+
+#temperature {
+  font-weight: 700;
+}
+
+#description {
+  font-style: italic;
+  font-size: 40px;
+}
+
+.weatherInfoDiv {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+  position: absolute;
+  top: 8%;
+  right: 15%;
+  font-weight: bold;
+}
+
+.button {
+  font-weight: 700;
+  font-family: 'Kanit', sans-serif;
+  font-variant: small-caps;
+  font-size: 25px;
+}
+
+/* DEGREE BUTTON */
+
+.toggle-container {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 40px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.toggle-container input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #46a6e6;
+  transition: 0.4s;
+  pointer-events: none;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 8px;
+  bottom: 8px;
+  background-color: rgba(253, 253, 253, 0.774);
+  transition: 0.2s;
+  pointer-events: none;
+}
+.slider::after {
+  position: absolute;
+  content: "C º";
+  height: 24px;
+  width: 24px;
+  right: 10px;
+  bottom: 6px;
+  transition: 0.2s;
+  color: #fff;
+  pointer-events: none;
+}
+
+input:checked + .slider {
+  background-color: #2b28d8;
+}
+
+input:checked + .slider:before {
+  transform: translateX(40px);
+}
+
+input:checked + .slider:after {
+  content: "F º";
+  left: 20px;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
