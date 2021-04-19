@@ -1,10 +1,10 @@
 import './styles.css';
-import form from './form';
+import { form, submitBtn } from './form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Convert from './converter';
 
 const content = document.getElementById('content');
-const weatherInfoDiv = document.createElement('div');
+export const weatherInfoDiv = document.createElement('div');
 const degButton = document.createElement('div');
 
 const h1 = document.createElement('h1');
@@ -38,14 +38,17 @@ let temp = 0;
 let deg = 'celsius';
 let sign = 'C';
 
-export default async function weatherInfo(city) {
+export async function weatherInfo(city) {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=749526431275a6828d7b2107b0a88638&units=metric`, {
       mode: 'cors',
     });
     if (response.status === '404') {
-      alert('City Not Found');
-      throw 'City not found';
+      weatherInfoDiv.innerHTML = `
+        <h1>Sorry! City not found :)</h1>
+      `;
+      document.body.appendChild(weatherInfoDiv);
+      throw new Error('Error 404');
     }
     const weatherData = await response.json();
 
@@ -76,6 +79,9 @@ export default async function weatherInfo(city) {
 }
 
 const degrees = document.getElementById('deg');
+
+// Event Listeners
+
 degrees.addEventListener('click', () => {
   if (deg === 'celsius') {
     document.getElementById('temperature').innerHTML = `${Math.round(Convert.toFare(temp))} F º`;
@@ -84,4 +90,12 @@ degrees.addEventListener('click', () => {
     document.getElementById('temperature').innerHTML = `${Math.round(temp)} C º`;
     deg = 'celsius';
   }
+});
+
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const cityName = document.getElementById('city-name').value;
+  weatherInfoDiv.innerHTML = '';
+  weatherInfo(cityName);
+  form.reset();
 });
