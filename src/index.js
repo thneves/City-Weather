@@ -1,6 +1,7 @@
 import './styles.css';
 import form from './form'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Convert from './converter'
 
 const content = document.getElementById('content');
 const weatherInfoDiv = document.createElement('div');
@@ -33,6 +34,10 @@ weekday[4] = "Thursday";
 weekday[5] = "Friday";
 weekday[6] = "Saturday";
 
+let temp = 0;
+let deg = 'celsius'
+let sign = 'C'
+
 
 export default async function weatherInfo(city) {
   try {
@@ -45,11 +50,17 @@ export default async function weatherInfo(city) {
     }
     let weatherData = await response.json();
     console.log(weatherData)
+  
+    temp = weatherData.main.temp;
+    if (deg === 'fare') {
+      temp = Math.round(Convert.toFare(temp))
+      sign = 'F'
+    }
 
     weatherInfoDiv.classList.add('weatherInfoDiv')
     weatherInfoDiv.innerHTML = `
       <h2 id="city">${weatherData.name}, ${weatherData.sys.country}</h2>
-      <h3 id="temperature">${Math.round(weatherData.main.temp) } C°</h3>
+      <h3 id="temperature">${Math.round(temp) } ${sign}°</h3>
       <h3 id="description">${weatherData.weather[0].description.replace(/\b[a-z]/g, match => match.toUpperCase())}
       <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png">
       </h3>
@@ -58,12 +69,20 @@ export default async function weatherInfo(city) {
       <h5 id="humidity">Humidity: ${weatherData.main.humidity}%</h5> 
     `
     document.body.appendChild(weatherInfoDiv);
+    temp = weatherData.main.temp;
   } catch (error) {
     console.log(error)
   }
 }
 
-let deg = document.getElementById('deg');
-deg.addEventListener('click', () => {
- //
+let degrees = document.getElementById('deg');
+degrees.addEventListener('click', () => {
+  if (deg === 'celsius') {
+    document.getElementById('temperature').innerHTML = `${Math.round(Convert.toFare(temp))} F º`;
+    deg = 'fare';
+  } else {
+    document.getElementById('temperature').innerHTML = `${Math.round(temp)} C º`;
+    deg = 'celsius';
+  }
 })
+

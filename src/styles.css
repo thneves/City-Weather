@@ -23,7 +23,7 @@ body {
 
 
 #temperature, #city {
-  font-size: 60px;
+  font-size: 55px;
 }
 
 #temperature {
@@ -32,16 +32,16 @@ body {
 
 #description {
   font-style: italic;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .weatherInfoDiv {
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'Kanit', sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   position: absolute;
-  top: 8%;
-  right: 15%;
+  top: 2%;
+  right: 8%;
   font-weight: bold;
 }
 
@@ -70,6 +70,10 @@ body {
   pointer-events: all;
 }
 
+.toggle-container input:hover {
+  cursor: pointer;
+}
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -89,7 +93,7 @@ body {
   width: 24px;
   left: 8px;
   bottom: 8px;
-  background-color: rgba(253, 253, 253, 0.774);
+  background-color: rgba(72, 135, 236, 0.774);
   transition: 0.2s;
   pointer-events: none;
 }
