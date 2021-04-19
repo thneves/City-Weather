@@ -21,8 +21,7 @@ body {
   font-family: 'Kanit', sans-serif;
 }
 
-
-#temperature, #city {
+#temperature #city {
   font-size: 55px;
 }
 
@@ -42,7 +41,6 @@ body {
   position: absolute;
   top: 2%;
   right: 8%;
-  font-weight: bold;
 }
 
 .button {
@@ -97,6 +95,7 @@ body {
   transition: 0.2s;
   pointer-events: none;
 }
+
 .slider::after {
   position: absolute;
   content: "C º";
@@ -113,11 +112,11 @@ input:checked + .slider {
   background-color: #2b28d8;
 }
 
-input:checked + .slider:before {
+input:checked + .slider::before {
   transform: translateX(40px);
 }
 
-input:checked + .slider:after {
+input:checked + .slider::after {
   content: "F º";
   left: 20px;
 }
@@ -126,6 +125,6 @@ input:checked + .slider:after {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }
