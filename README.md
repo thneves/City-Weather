@@ -12,6 +12,7 @@ also shows date and time, wind speed and humidity levels. It is also possible to
 - Javascript
 - Webpack
 - Bootstrap
+- [Open Weather Map API](https://openweathermap.org/)
 
 ## Live Demo
 

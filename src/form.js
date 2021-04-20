@@ -6,6 +6,7 @@ input.setAttribute('type', 'text');
 input.setAttribute('id', 'city-name');
 input.setAttribute('placeholder', 'City');
 input.classList.add('form-control');
+// input.required = true;/
 
 export const submitBtn = document.createElement('button'); // input element, Submit button
 submitBtn.setAttribute('type', 'submit');
