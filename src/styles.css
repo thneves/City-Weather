@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('./bg3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#content {
+  margin-top: 180px;
+}
+
+.color {
+  color: rgb(241, 241, 241);
+  font-family: 'Kanit', sans-serif;
+}
+
+#temperature {
+  font-size: 58px;
+  font-weight: 700;
+}
+
+#city {
+  font-size: 55px;
+}
+
+#description {
+  font-style: italic;
+  font-size: 35px;
+}
+
+.weatherInfoDiv {
+  color: rgb(255, 255, 255);
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  position: absolute;
+  top: 2%;
+  right: 8%;
+}
+
+.button {
+  font-weight: 700;
+  font-family: 'Kanit', sans-serif;
+  font-variant: small-caps;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(127, 172, 255);
+}
+
+/* DEGREE BUTTON */
+
+.toggle-container {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 40px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.toggle-container input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+
+.toggle-container input:hover {
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #46a6e6;
+  transition: 0.4s;
+  pointer-events: none;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 8px;
+  bottom: 8px;
+  background-color: rgba(72, 135, 236, 0.774);
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.slider::after {
+  position: absolute;
+  content: "F º";
+  height: 24px;
+  width: 24px;
+  right: 10px;
+  bottom: 6px;
+  transition: 0.2s;
+  color: #fff;
+  pointer-events: none;
+}
+
+input:checked + .slider {
+  background-color: #2b28d8;
+}
+
+input:checked + .slider::before {
+  transform: translateX(40px);
+}
+
+input:checked + .slider::after {
+  content: "C º";
+  left: 20px;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+/* LOADING  */
+
+#loading {
+  width: 3rem;
+  height: 3rem;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid hsl(226, 83%, 61%);
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1.5s infinite linear;
+}
+
+#loading.display {
+  visibility: visible;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
